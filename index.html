@@ -20,6 +20,7 @@
     <th>Full Name</th>
     <th>Address</th>
     <th>Grocery List</th>
+    <th>Store Location</th>
 
   </tr>
   <tr ng-repeat="Order in Orders">
@@ -29,6 +30,7 @@
     <td>{{ Order.fName }}</td>
     <td>{{ Order.address }}</td>
     <td>{{ Order.grocery_list }}</td>
+    <td>{{ Order.store_location }}</td>
   </tr>
 </table>
 <br>
@@ -47,6 +49,10 @@
     <input class="w3-input w3-border" type="text" ng-model="grocery_list" placeholder="Copy and Paste Your Own or Enter List Separated By Commas">
   <br>
 
+    <label>Store Location:</label>
+    <input class="w3-input w3-border" type="text" ng-model="grocery_list" placeholder="Please Enter your Desired Store">
+  <br>
+
 <button class="w3-btn w3-green w3-hover"  ng-click="saveOrder()">&dollar; Place Order</button>
 </form>
 
@@ -58,10 +64,12 @@ angular.module('myApp', []).controller('OrderCtrl', function($scope) {
 $scope.fName = '';
 $scope.address = '';
 $scope.grocery_list = '';
+$scope.store_location = '';
+
 
 
 $scope.Orders = [
-  {id:1, fName:'Jack Brown', address:"123 Appletree Ln Knoxville, TN 37919", grocery_list:"Whole Wheat Bread, Organic Eggs, Whole Milk" },
+  {id:1, fName:'Jack Brown', address:"123 Appletree Ln Knoxville, TN 37919", grocery_list:"Whole Wheat Bread, Organic Eggs, Whole Milk", store_location:"Kroger - Chapman HWY" },
 ];
 
 $scope.edit = true;
@@ -84,7 +92,7 @@ $scope.editOrder = function(id) {
 };
 
 $scope.saveOrder = function() {
-  $scope.Orders.push({id: $scope.Orders.id +1, fName: $scope.fName, address: $scope.address, grocery_list: $scope.grocery_list});
+  $scope.Orders.push({id: $scope.Orders.id +1, fName: $scope.fName, address: $scope.address, grocery_list: $scope.grocery_list, store_location:$scope.store_location});
 };
 
 });
